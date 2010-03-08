@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Console</title>
+	<link rel="stylesheet" href="/media/css/css.css" type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+<div class="console_holder">
+	{% if message %}
+		<div class="message">{{ message }}</div>
+	{% endif %}
+	<div class="console">
+		{% for m in messages.objects %}
+			<p>[{{m.username}}] {{m.message|safe}}</p>
+		{% endfor %}
+	</div>
+	<form id="command" method='post' action='/post/'>
+		<input type="text" name="username" id="username" />
+		<input type="text" name='message' id="input"/>
+	</form>
+	<p class="quick">Add your own: (Note: all html is valid please only use single quotes)
+		<form id="add_form" method='post' action='.'>
+			Command: <input type="text" name="command_name" />
+			Output: <input type="text" name="command_output" />
+			<input class="button" type="submit">
+		</form>
+	</p>
+</div>
+<div id="help">
+	<ul>
+		{% for c in commands.objects %}
+			<li><a href="#" class="command">{{c.command}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="http://files.bmdev.org/media/js/jquery.js"></script>
+<script src="/media/js/script.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

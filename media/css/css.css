@@ -1,0 +1,68 @@
+body {
+	font-family: "Courier New";
+	background: #111;
+	color: #FFF;
+	font-size: 12px;
+}
+p {
+	margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;
+}
+div.console_holder {
+	margin: 0px auto;
+	width: 100%;
+}
+div.console {
+	padding: 5px;
+	height: 600px;
+	background: #000;
+	overflow: auto;
+	color: #FFF;
+	font-size: 12px;
+	line-height: 14px;
+}
+p.command_line {
+	margin: 0px 0px 5px 0px; padding: 0px 0px 0px 0px;
+}
+p.quick {
+	padding: 5px;
+}
+	form#add_form {
+		padding: 0px 5px;
+	}
+	input {
+		width: 200px;
+		background: #474747;
+		padding: 5px 0px;
+		border: none;
+		color: #c7c7c7;
+	}
+	input.button {
+		width: auto;
+		background: #111;
+	}
+div.console_holder input#input {
+	font-family: "Courier New";
+	width: 90%;
+	margin: 2px 0% 0px 0px;
+	background: #474747;
+	padding: 5px 0px 6px 0px;
+	border: none;
+	color: #c7c7c7;
+}
+#username {
+	float: left;
+	width: 10%;
+	background: #000;
+}
+a {
+	color: #00ff00;
+	text-decoration: none;
+}
+.message {
+	background: red;
+	color: #000;
+	font-size: 18px;
+}
+/*#help {
+	display: none;
+}*/

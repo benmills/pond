@@ -1,0 +1,3 @@
+{% for m in chat.objects %}
+	<p>[{{m.username}}] {{m.message|safe}}</p>
+{% endfor %}
