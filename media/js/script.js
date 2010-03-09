@@ -1,41 +1,38 @@
+// Page load
 var orig = $('div.console').html();
+$('div.console').attr({scrollTop: $("div.console").attr("scrollHeight")});
+if ($.cookie('username')) $('input#username').val($.cookie('username'));
 
-// Post Chat
+// Submit line
 $('form#command').submit(function(e) {
-	e.preventDefault();
+	$.cookie('username', $('input#username').val());
 	$.ajax({
 		type: 'POST',
 		data: {message: $('input#input').val(), username: $('input#username').val()},
 		url: '/post/',
 		success: function(data) {
-			$('div.console').append(data);
+			$('div.console').append(data).attr({scrollTop: $("div.console").attr("scrollHeight")});
 			$('input#input').val('').focus();
 		}
 	});
 	return false;
 });
 
-// use a command
+// Commands
 $('a.command').live('click', function(e) {
 	e.preventDefault();
+	$('input#input').val($('input#input').val()+$(this).html());
 });
 
-// Update Chat
+// Update
 function check_chat() {
-	$.ajax({
-		type: 'GET',
-		url: '/check/',
-		success: function(data) {
+	$.get('/check/', function(data) {
 			if ($('div.console p:last').html() != $(data).html()) {
-				$.ajax({
-					url: '/feed/',
-					success: function(data) {
-						$("div.console").html(data).attr({scrollTop: $("div.console").attr("scrollHeight")});;
-					}
+				$.ajax('/feed/', function(data) {
+						$("div.console").html(data).attr({scrollTop: $("div.console").attr("scrollHeight")});
 				});
 			}
-		}
-	})
+	});
 }
 
 setInterval ("check_chat()", 1000);

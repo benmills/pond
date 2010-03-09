@@ -7,6 +7,9 @@ body {
 p {
 	margin: 0px 0px 0px 0px; padding: 0px 0px 0px 0px;
 }
+input {
+	font-family: "Courier New";
+}
 div.console_holder {
 	margin: 0px auto;
 	width: 100%;
@@ -62,6 +65,9 @@ a {
 	background: red;
 	color: #000;
 	font-size: 18px;
+}
+.hide {
+	display: none;
 }
 /*#help {
 	display: none;

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Console</title>
+	<title>Console Chat</title>
 	<link rel="stylesheet" href="/media/css/css.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
@@ -13,15 +13,14 @@
 		<div class="message">{{ message }}</div>
 	{% endif %}
 	<div class="console">
-		{% for m in messages.objects %}
-			<p>[{{m.username}}] {{m.message|safe}}</p>
-		{% endfor %}
+		{% include "chat_feed.html" %}
 	</div>
 	<form id="command" method='post' action='/post/'>
 		<input type="text" name="username" id="username" />
 		<input type="text" name='message' id="input"/>
+		<input class='hide' type="submit" value="Add">
 	</form>
-	<p class="quick">Add your own: (Note: all html is valid please only use single quotes)
+	<p class="quick">Add your own:
 		<form id="add_form" method='post' action='.'>
 			Command: <input type="text" name="command_name" />
 			Output: <input type="text" name="command_output" />
@@ -30,6 +29,7 @@
 	</p>
 </div>
 <div id="help">
+	<p class="quick">Note: you can not use html at all anymore, links will become links and images will become image tags.</p>
 	<ul>
 		{% for c in commands.objects %}
 			<li><a href="#" class="command">{{c.command}}</a></li>
@@ -37,7 +37,8 @@
 	</ul>
 </div>
 </body>
-<script type="text/javascript" charset="utf-8" src="http://files.bmdev.org/media/js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="/media/js/cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="/media/js/script.js" type="text/javascript" charset="utf-8"></script>
 
 </html>
