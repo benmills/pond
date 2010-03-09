@@ -28,7 +28,7 @@ $('a.command').live('click', function(e) {
 function check_chat() {
 	$.get('/check/', function(data) {
 			if ($('div.console p:last').html() != $(data).html()) {
-				$.ajax('/feed/', function(data) {
+				$.get('/feed/', function(data) {
 						$("div.console").html(data).attr({scrollTop: $("div.console").attr("scrollHeight")});
 				});
 			}
