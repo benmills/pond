@@ -1,10 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Console Chat</title>
+	<title>Snake Chat</title>
 	<link rel="stylesheet" href="/media/css/css.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
@@ -12,15 +10,18 @@
 	{% if message %}
 		<div class="message">{{ message }}</div>
 	{% endif %}
+	<input type="hidden" value="0" id="last_updated">
 	<div class="console">
 		{% include "chat_feed.html" %}
 	</div>
+	
 	<form id="command" method='post' action='/post/'>
 		<input type="text" name="username" id="username" />
 		<input type="text" name='message' id="input"/>
 		<input class='hide' type="submit" value="Add">
 	</form>
-	<p class="quick">Add your own:
+	
+	<p class="quick">Add a custom command:
 		<form id="add_form" method='post' action='.'>
 			Command: <input type="text" name="command_name" />
 			Output: <input type="text" name="command_output" />
@@ -28,17 +29,17 @@
 		</form>
 	</p>
 </div>
-<div id="help">
-	<p class="quick">Note: you can not use html at all anymore, links will become links and images will become image tags.</p>
+<div class="help hide">
 	<ul>
+		<li><b>commands</b></li>
 		{% for c in commands.objects %}
-			<li><a href="#" class="command">{{c.command}}</a></li>
+			<li>{{c.command}}</li>
 		{% endfor %}
 	</ul>
 </div>
 </body>
+
 <script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script src="/media/js/cookie.js" type="text/javascript" charset="utf-8"></script>
 <script src="/media/js/script.js" type="text/javascript" charset="utf-8"></script>
-
 </html>

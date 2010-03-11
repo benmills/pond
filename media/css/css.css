@@ -23,6 +23,11 @@ div.console {
 	font-size: 12px;
 	line-height: 14px;
 }
+	div.console ul {
+		margin: 5px 0px 5px 0px;
+		padding: 0px 0px 0px 15px;
+		list-style: square;
+	}
 p.command_line {
 	margin: 0px 0px 5px 0px; padding: 0px 0px 0px 0px;
 }
@@ -69,6 +74,14 @@ a {
 .hide {
 	display: none;
 }
-/*#help {
-	display: none;
-}*/
+p.outdated {
+	color: #999;
+}
+span.time_delta {
+	font-size: 11px;
+	float: right;
+	color: #232323;
+}
+	div.console p:hover span.time_delta {
+		color: #555;
+	}

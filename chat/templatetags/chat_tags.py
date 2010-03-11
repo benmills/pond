@@ -7,7 +7,7 @@ import re
 register = template.Library()	
 
 @register.filter
-def imageize(obj):
+def magicize(obj):
 	types = ('.jpg', '.jpeg', '.gif', '.png')
 	line = obj.split(' ')
 	output = ''
@@ -36,7 +36,20 @@ def imageize(obj):
 						</object>
 						""" % (video_id, video_id)
 		
-			# Url
+		# Vimeo
+		elif l.find('vimeo.com') > 0:
+			v = l.split('vimeo.com/')
+			if len(v)>0: 
+				l = """
+				<object width="400" height="225">
+				<param name="allowfullscreen" value="true" />
+				<param name="allowscriptaccess" value="always" />
+				<param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=%s&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />
+				<embed src="http://vimeo.com/moogaloop.swf?clip_id=%s&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="225">
+				</embed>
+				</object>
+				""" % (v[1], v[1])
+			
 		else:
 			l = urlize(l)
 		

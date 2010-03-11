@@ -5,11 +5,12 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
+PATH = '/sites/console/'
 
 SITE_ID = 1
 USE_I18N = True
 
-MEDIA_ROOT = '/sites/console/media'
+MEDIA_ROOT = PATH+'media'
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/admin_media/'
 SECRET_KEY = '2l6-a0h-3bs#a14v**#puc+z=2k#94hyx&=ahbvhl=vj(pi1q@'
@@ -29,7 +30,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'console.urls'
 
-TEMPLATE_DIRS = ('/sites/console/templates/')
+TEMPLATE_DIRS = (PATH+'templates/')
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -1,5 +1,12 @@
 {% load chat_tags %}
 
-<p>[{{m.username}}] 
-	{{m.message|striptags|imageize|safe}}
+<p {% if m.outdated %}class="outdated"{% endif %}>
+	<span class='time hide'>{{m.time}}</span>
+	<span class='time_delta'>{{m.timedelta}} minutes ago</span>
+	[{{m.username}}] 
+	{% if not m.outdated %}
+		{{m.output|striptags|magicize|safe}}
+	{% else %}
+		{{m.output|striptags|safe}}
+	{% endif %}
 </p>
