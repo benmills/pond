@@ -4,6 +4,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Snake Chat</title>
 	<link rel="stylesheet" href="/media/css/css.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<script type="text/javascript" charset="utf-8">
+		function sock(data) {
+			$('div.console').append(data);
+		}
+	</script>
 </head>
 <body>
 <div class="console_holder">
@@ -37,6 +42,16 @@
 		{% endfor %}
 	</ul>
 </div>
+
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="1" height="1" id="flashsocket-debug" align="middle">
+<param name="allowScriptAccess" value="sameDomain">
+<param name="movie" value="/media/flashsocket-debug.swf">
+<param name="quality" value="high">
+<param name="bgcolor" value="#FFFFFF">
+<embed src="/media/flashsocket-debug.swf" quality="high" bgcolor="#FFFFFF" width="1" height="1" name="flashsocket-debug" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+</object>
+
+
 </body>
 
 <script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>

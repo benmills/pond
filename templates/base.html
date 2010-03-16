@@ -1,0 +1,78 @@
+{% load chat_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Pond {% block title %}{% endblock %}</title>
+	
+	<link rel="stylesheet" href="/media/css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/media/css/frontend.css" type="text/css" media="screen" title="no title" charset="utf-8">
+</head>
+<body>
+<div id="main">
+	
+	<div id="header">
+		{% if user.username %}
+			<div id="user_info">
+				Welcome back <strong>{{user.username|capwords}}</strong><br>
+				<a href="{% url logout %}">Logout</a>
+			</div>
+		{% endif %}
+		<img src="media/pond.png" width="148" height="52" alt="Pond">
+	</div>
+	
+	{% if user.username %}
+		{% block content %}
+		{% endblock %}
+	{% else %}
+		<div id="welcome">
+			<p class='welcome_text'>
+				<strong>Welcome to Pond, you seem to be new here.</strong> 
+				Pond right now is straightforward chat. However in the future who knows? For now register below (<i>yes all you need is a name and password</i>) and have a good time!
+			</p>
+			{% if message %}
+				<div class="message">{{ message }}</div>
+			{% endif %}
+			<form method="post" action=".">
+				<p><label for="name">Name: </label> <input class="text" type="text" name="name"/></p>
+				<p><label for="password">Password: </label> <input class="text" type="password" name="password"/></p>
+				<input class="button" type="submit" value="Login">
+				<div class='submit_login'>
+					<label>New Account?</label><input type="checkbox" name="should_register">
+				</div>
+			</form>
+		</div>
+	{% endif %}
+
+	<div id="footer">
+		{% if online %}
+			{% if user.username %}
+				<div id="online_users">
+					<h3>Active Users:</h3>
+					{% for u in online %}
+						<p>{{u.username|capwords}}</p>
+					{% endfor %}
+				</div>
+			{% else %}
+			{{online|length}} Online Pond Users<br>
+			{% endif %}
+			
+		{% endif %}
+		Pond is still being built so your going to see things go wrong. If you do, tell <a href="http://twitter.com/benemills/" target="_blank">Ben Mills</a> about it.<br>
+		Pond was built using <a href="http://www.djangoproject.com/" target="_blank">Djagno</a> and <a href="http://mongodb.com/">mongoDB</a><br>
+		{% if chat %}
+			There are {{chat|length}} posts on Pond
+		{% endif %}
+	{% block footer %}
+	{% endblock %}
+	</div>
+	
+	<img id="appventurous" src="/media/logo.png" width="144" height="41" alt="Logo">
+</div>
+</body>
+
+<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="/media/js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="/media/js/script.js" type="text/javascript" charset="utf-8"></script>
+</html>

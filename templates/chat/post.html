@@ -1,0 +1,14 @@
+{% load chat_tags %}
+
+<div class="chat_line{% if m.outdated %} outdated{% endif %}">
+	<span class='timestamp hide'>{{m.time}}</span>
+	<span class="name">{{m.user.username|capwords}}:</span>
+	<span class="content">
+	{% if not m.outdated %}
+		{{m.message|striptags|magicize|safe}}
+	{% else %}
+		{{m.message|striptags|urlize|safe}}
+	{% endif %}
+	</span>
+	<p class="time">{{m.timedelta|timeize}}</p>
+</div>

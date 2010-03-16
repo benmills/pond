@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load chat_tags %}
+
+{% block content %}
+	<div id="chat">
+		{% include "chat/chat_feed.html" %}
+	</div>
+
+	<div id="poster">
+		<form id="add_post" method='post' action='/post/'>
+			<input autocomplete="off" type="text" name='message' id="input"/>
+			<input class='hide' type="submit" value="Add">
+		</form>
+	</div>
+{% endblock %}

@@ -7,6 +7,24 @@ import re
 register = template.Library()	
 
 @register.filter
+def timeize(obj):
+	o = obj/60
+	if o > 0:
+		oo = o/60
+		if oo > 0:
+			return str(oo)+" days ago"
+		else: return str(o)+" hours ago"
+	else:
+		return str(obj)+" minutes ago"
+
+@register.filter
+def capwords(obj):
+	words = obj.split(' ')
+	new_word = ''
+	for w in words: new_word += str(w).capitalize()+" "
+	return new_word[:len(new_word)-1]
+
+@register.filter
 def magicize(obj):
 	types = ('.jpg', '.jpeg', '.gif', '.png')
 	line = obj.split(' ')

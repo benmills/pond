@@ -1,0 +1,176 @@
+body {
+	background: #4498e5 url('/media/background.png');
+	font-family: Trebuchet MS, Helvetica;
+	color: #051e35;
+}
+
+strong {
+	font-weight: bold;
+	color: #FFF;
+}
+
+.hide {
+	display: none;
+}
+
+#main {
+	margin: 30px auto;
+	width: 900px;
+}
+
+a {
+	color: #479ceb;
+}
+
+/* Header */
+
+#header {
+	margin: 0px 0px 10px 0px;
+	height: 60px;
+	width: 900px;
+	overflow: auto;
+}
+
+#user_info {
+	margin: 15px 0px 0px 0px;
+	float: right;
+	text-align: right;
+	color: #bcddfc;
+	font-size: 13px;
+}
+ #user_info a {
+		color: #bcddfc;
+	}
+
+/* Chat */
+
+#chat {
+	background: #FFF;
+	height: 600px;
+	overflow: auto;
+}
+	.chat_line {
+		padding: 15px 15px 0px 15px;
+	}
+	.chat_line:last-child {
+		padding: 15px;
+	}
+		.chat_line .content {
+			line-height: 23px;
+		}
+		.chat_line .time {
+			margin: 3px 0px 0px 0px;
+			font-size: 12px;
+			color: #bdbdbd;
+		}
+		.chat_line .name {
+			color: #1966ae;
+		}
+		
+/* Poster */
+
+#poster {
+	margin: 10px 0px 0px 0px;
+	height: 35px;
+	background: #FFF url('/media/poster_background.png') no-repeat left;
+}
+	#poster input {
+		margin: 0px 0px 0px 21px;
+		padding: 9px 10px;
+		width: 858px;
+		border: none;
+		font-size: 14px;
+	}
+
+/* Welcome */
+
+#welcome {
+	background: #FFF;
+	padding: 15px;
+}
+	#welcome strong {
+		margin: 0px 0px 4px 0px;
+		color: #479bea;
+		font-size: 28px;
+		display: block;
+	}
+	.welcome_text {
+		padding: 0px 0px 30px 0px; margin: 0px 0px 30px 0px;
+		line-height: 27px;
+		font-size: 22px;
+		border-bottom: 1px solid #d7e7f5;
+	}
+	#welcome form {
+		margin: 0px auto 20px auto;
+		width: 780px;
+	}
+	#welcome form, #welcome input {
+		font-size: 18px;
+	}
+	#welcome form p {
+		display: inline-block;
+		width: 345px;
+	}
+	#welcome form label {
+		display: block;
+		margin: 0px 0px 3px 0px;
+	}
+	#welcome form input.text {
+		width: 315px;
+		padding: 5px;
+		border-top: 1px solid #4598e6;
+		border-left: 1px solid #4598e6;
+		
+		border-bottom: 1px solid #a8d5ff;
+		border-right: 1px solid #a8d5ff;
+		-moz-border-radius: 2px;
+		-webkit-border-radius: 2px;
+	}
+	#welcome form input.button {
+		padding: 5px;
+		background: #deeefc;
+		color: #479ceb;
+		border: 1px solid #b4d8fa;
+		-moz-border-radius: 2px;
+		-webkit-border-radius: 2px;
+	}
+	#welcome form .submit_login {
+		margin: 8px 0px 0px 0px;
+	}
+		#welcome form .submit_login label {
+			display: inline;
+		}
+	#welcome .message {
+		background: #fcf8de;
+		color: #ae8f71;
+		padding: 10px;
+		width: 760px;
+		margin: 0px auto 13px auto;
+	}
+	
+/* Footer */
+#footer {
+	padding: 10px 0px;
+	color: #94c5f3;
+	line-height: 22px;
+}
+	#footer a {
+		color: #94c5f3;
+	}
+	
+#online_users {
+	margin: 0px 25px 0px 0px;
+	border-right: 1px solid #348ee3;
+	width: 130px;
+	min-height: 68px;
+	float: left;
+}
+	#online_users h3 {
+		color: #bbdeff;
+		font-size: 18px;
+	}
+	
+#appventurous {
+	margin: 0px 0px 0px 0px;
+	float: right;
+}
