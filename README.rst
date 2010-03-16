@@ -10,7 +10,3 @@ Dependencies
 - mongoengine (http://github.com/hmarr/mongoengine)
 - mongodb (http://www.mongodb.org)
 
-Dependencies
-============
-- mongoengine (http://github.com/hmarr/mongoengine)
-- mongodb (http://www.mongodb.org)
