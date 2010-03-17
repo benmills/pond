@@ -12,7 +12,7 @@ register = template.Library()
 @register.inclusion_tag('partials/online_users.html')
 def online_users():
 	return {
-		'online_users': User.objects(last_login__gt=(datetime.now() - timedelta(seconds=20))),
+		'online_users': User.objects(last_login__gt=(datetime.now() - timedelta(minutes=15))),
 	}
 
 @register.filter

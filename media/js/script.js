@@ -31,7 +31,39 @@ function get_active_users() {
 		}
 	});
 }
-setInterval ("get_active_users()", 1000);
+
+function update_time() {
+	$("div.chat_line span.timestamp").each(function() {
+		var timestamp = parseFloat($(this).html());
+		var ts = Math.round(new Date().getTime() / 1000);
+		var delta = ts - timestamp;
+		var output = "";
+		var time = 0;
+		
+		//console.log(delta);
+		
+		if (delta < 60) {
+			output = "seconds";
+			time = delta;
+		} else {
+			// Minutes
+			time = delta/60;
+			if ((time/60)>1) {
+				time = time/60;
+				if ((time/24)>1) {
+					time = time/24;
+					output = 'days';
+				} else output = "hours";
+			} else output = "minutes";
+		}
+		
+		time = Math.round(time);
+		if (time == 1) output = output.substr(0, output.length-1);
+		
+		$(this).siblings('p.time').html(Math.round(time)+" "+output+" ago");
+	});
+}
+update_time();
 
 $('div#chat').attr({scrollTop: $("div#chat").attr("scrollHeight")});
 
@@ -66,7 +98,11 @@ function check_chat() {
 	}
 	update_title();
 }
-if ($("div#chat").html()) setInterval ("check_chat()", 900);
+if ($("div#chat").html()) {
+	setInterval("update_time()", 60000)
+	setInterval("check_chat()", 900);
+	setInterval("get_active_users()", 60000);
+}
 
 // Submit line
 $('form#add_post').submit(function(e) {
