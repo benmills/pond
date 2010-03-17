@@ -46,21 +46,12 @@
 	{% endif %}
 
 	<div id="footer">
-		{% if online %}
-			{% if user.username %}
-				<div id="online_users">
-					<h3>Active Users:</h3>
-					{% for u in online %}
-						<p>{{u.username|capwords}}</p>
-					{% endfor %}
-				</div>
-			{% else %}
-			{{online|length}} Online Pond Users<br>
-			{% endif %}
-			
+		{% if user.username %}
+			{% online_users %}
+			<p class="text">When you posts links they will automatically become click about. Also if you want to post a video or image just post the URL like: http://test.com/img.jpg or http://vimeo.com/10208961</p>
 		{% endif %}
 		Pond is still being built so your going to see things go wrong. If you do, tell <a href="http://twitter.com/benemills/" target="_blank">Ben Mills</a> about it.<br>
-		Pond was built using <a href="http://www.djangoproject.com/" target="_blank">Djagno</a> and <a href="http://mongodb.com/">mongoDB</a><br>
+		Pond was built using <a href="http://www.djangoproject.com/" target="_blank">Django</a> and <a href="http://mongodb.com/" target="_blank">mongoDB</a>. It is hosted on <a href="http://linode.com" target="_blank">linode</a>. You can find Pond's code at <a href="http://github.com/benmills/pond" target="_blank">github</a><br>
 		{% if chat %}
 			There are {{chat|length}} posts on Pond
 		{% endif %}

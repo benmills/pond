@@ -60,6 +60,9 @@ def get_chat(request, date=0):
 		'chat': Chat.objects.filter(time__gt=(float(date)+.01)).order_by('+time')
 	})
 	
+def active_users(request):
+	return render_to_response('chat/active_users.html')
+	
 def register(request):
 	if request.method == 'POST' and request.POST['name'] and request.POST['password']:
 		u = User(username=request.POST['name'])

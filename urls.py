@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 	url(r'^check$', 'chat.views.check_chat', name='check_chat'),
 	url(r'^feed/$', 'chat.views.get_chat', name='get_chat'),
 	url(r'^feed/(?P<date>.*)$', 'chat.views.get_chat', name='get_chat'),
+	url(r'^active_users/$', 'chat.views.active_users', name='active_users'),
 	
 	url(r'^register/$', 'chat.views.register', name='register'),
 	url(r'^login/$', login, {'template_name':'user/login.html'}, name='login'),

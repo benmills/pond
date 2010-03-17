@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
-PATH = '/djp/console/'
+PATH = '/sites/console/'
 
 SITE_ID = 1
 USE_I18N = True

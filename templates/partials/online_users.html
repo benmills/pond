@@ -1,0 +1,12 @@
+{% load chat_tags %}
+
+<div id="online_users">
+	<h3>Active Users:</h3>
+	{% if online_users %}
+		{% for u in online_users %}
+			<p>{{u.username|capwords}}</p>
+		{% endfor %}
+	{% else %}
+		No active users
+	{% endif %}
+</div>

@@ -23,6 +23,16 @@ function update_title() {;
 	} 
 }
 
+function get_active_users() {
+	$.ajax({
+		url: '/active_users/',
+		success: function(data) {
+			$("#online_users").html($(data).html());
+		}
+	});
+}
+setInterval ("get_active_users()", 1000);
+
 $('div#chat').attr({scrollTop: $("div#chat").attr("scrollHeight")});
 
 // Update

@@ -157,12 +157,15 @@ a {
 	#footer a {
 		color: #94c5f3;
 	}
+	#footer .text {
+		margin: 0px 0px 10px 0px;
+	}
 	
 #online_users {
-	margin: 0px 25px 0px 0px;
+	margin: 0px 22px 0px 0px;
 	border-right: 1px solid #348ee3;
 	width: 130px;
-	min-height: 68px;
+	min-height: 108px;
 	float: left;
 }
 	#online_users h3 {

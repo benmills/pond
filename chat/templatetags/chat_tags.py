@@ -1,10 +1,19 @@
 from django import template
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import urlize
+from datetime import datetime, timedelta
+from chat.models import *
+from mongoengine.django.auth import User
 import logging
 import re
 
 register = template.Library()	
+
+@register.inclusion_tag('partials/online_users.html')
+def online_users():
+	return {
+		'online_users': User.objects(last_login__gt=(datetime.now() - timedelta(seconds=20))),
+	}
 
 @register.filter
 def timeize(obj):
