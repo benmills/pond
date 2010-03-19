@@ -18,7 +18,7 @@ $('input#input').focus();
 
 function update_title() {;
 	if (blink_title.length > 0 && focused == false) {
-		if ($('title').html() != '-') $('title').html('-');
+		if ($('title').html() != '~~~~') $('title').html('-');
 		else $('title').html(blink_title);
 	} 
 }
@@ -99,7 +99,7 @@ function check_chat() {
 	update_title();
 }
 if ($("div#chat").html()) {
-	setInterval("update_time()", 60000)
+	setInterval("update_time()", 20000)
 	setInterval("check_chat()", 900);
 	setInterval("get_active_users()", 60000);
 }

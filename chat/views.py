@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render_to_response, redirect
+from django.core import serializers
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
@@ -6,6 +7,8 @@ from django.http import HttpResponse
 from datetime import datetime, timedelta
 from chat.models import *
 from mongoengine.django.auth import User
+import simplejson
+
 
 def index(request):
 	message = None
@@ -29,15 +32,12 @@ def index(request):
 		else:
 			auth_login(request, u)
 		
-	#online users
-	delta = datetime.now() - timedelta(minutes=20)
-	online = User.objects(last_login__gt=delta)
-	
+	chat = Chat.objects.order_by('+time')
+
 	return render_to_response('chat/chat.html', {
 		'message': message,
-		'chat': Chat.objects.order_by('+time'),
+		'chat': chat[len(chat)-50:],
 		'user': request.user,
-		'online': online
 	})
 	
 def post_chat(request):
@@ -58,6 +58,12 @@ def check_chat(request):
 def get_chat(request, date=0):
  	return render_to_response('chat/chat_feed.html', {
 		'chat': Chat.objects.filter(time__gt=(float(date)+.01)).order_by('+time')
+	})
+	
+def chat_json(request):
+	chat = Chat.objects.order_by('+time')
+	return render_to_response('feeds/chat.json', {
+		'chat': chat[len(chat)-50:]
 	})
 	
 def active_users(request):

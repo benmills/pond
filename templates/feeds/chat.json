@@ -1,0 +1,7 @@
+[{% for c in chat %}
+	{
+		"time":"{{c.time}}",
+		"message":"{{c.message}}",
+		"user":"{{c.user.username}}"
+	}{% if not forloop.last %},{% endif %}
+{% endfor %}]
